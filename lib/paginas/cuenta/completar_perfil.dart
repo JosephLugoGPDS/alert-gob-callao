@@ -188,7 +188,7 @@ Widget displayUserInformation(context,snapshot){
                             informacion.id = user.uid;
                             // informacion.nombre = 
 
-                            userProvider.agregarInformacion(informacion);
+                            userProvider.actualizarInformacion(informacion);
 
                             await auth.updateUserName(informacion.nombre,user.photoUrl, user);
 

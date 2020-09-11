@@ -1,3 +1,5 @@
+import 'package:EstoyaTuLado/modelos/userinfo.dart';
+import 'package:EstoyaTuLado/servicios/user.service.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 
 import '../../servicios/auth.dart';
 import '../../utils/constantes.dart';
-import 'menu.dart';
 
 class CompletarPerfil3 extends StatefulWidget {
   @override
@@ -13,14 +14,19 @@ class CompletarPerfil3 extends StatefulWidget {
 }
 
 class _CompletarPerfil3State extends State<CompletarPerfil3> {
+
+  UserMoreInfo informacion = new UserMoreInfo();
   final AuthService auth = AuthService();
+
+
+  final _formKey = GlobalKey<FormState>();
+  final userProvider = UserInfoProvider();
   FirebaseUser user;
-  // TEXT FIELDS STATE
+  //model use
 
-
-  String respaldoNombre = '';
-  String respaldoCelular = '';
-  String error = '';
+  //textfield
+  final _nombreContactoController = TextEditingController();
+  final _telContactoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,11 +94,11 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
   }
 
   Widget displayUserInformation(context, snapshot) {
-    // final user = snapshot.data;
+    final user = snapshot.data;
     return Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
-          // key: _formKey,
+          key: _formKey,
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
@@ -100,18 +106,17 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
                 decoration: textInputDecoration.copyWith(
                     hintText: 'Nombre de Contacto'),
                 validator: (val) => val.isEmpty ? 'Ingrese un nombre' : null,
-                onChanged: (val) {
-                  setState(() => respaldoNombre = val);
-                },
+                onSaved: (val) => informacion.respaldoName = val,
+                controller: _nombreContactoController,
               ),
               SizedBox(height: 10.0),
               TextFormField(
                 keyboardType: TextInputType.phone,
                 decoration: textInputDecoration.copyWith(
                     hintText: 'Celular de Contacto'),
-                // ignore: todo
-                //TODO validacion telefono fijo o celular
-                validator: (val) => val.length < 7?'Ingrese un teléfono o celular válido':null
+                onSaved: (val) =>informacion.respaldoTel = val,
+                validator: (val) => val.length<7?'Ingrese un teléfono o celular válido':null,
+                controller: _telContactoController,
               ),
 
               
@@ -128,10 +133,25 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
                   color: Colors.white,
                   child: Text('Guardar',
                       style: TextStyle(color: Color.fromRGBO(206,40,112,1.0), fontSize: 25)),
-                  onPressed: () async {
-                    //TO DO Guardar datos
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Configuracion()));
+                  //   //ToDo Guardar datos
+                  onPressed: ()async{
+                    
+                    if(_formKey.currentState.validate()){
+
+                            _formKey.currentState.save();
+
+                            //auxiliar para guardar info
+                            UserMoreInfo aux;
+                            informacion.id = user.uid;
+                            aux = await userProvider.cargarInformacion2(informacion);
+
+                            //actualizar
+                            await userProvider.actualizarInformacion(aux);
+
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                          }
                   },
                 ),
               ),
@@ -157,8 +177,6 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(builder: (context) => Configuracion()));
                 },
               ),
             ],

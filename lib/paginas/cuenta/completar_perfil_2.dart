@@ -1,3 +1,5 @@
+
+
 import 'package:EstoyaTuLado/modelos/userinfo.dart';
 import 'package:EstoyaTuLado/servicios/user.service.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -10,6 +12,7 @@ import '../../servicios/auth.dart';
 import '../../utils/constantes.dart';
 import 'completar_perfil_3.dart';
 
+
 class CompletarPerfil2 extends StatefulWidget {
   @override
   _CompletarPerfil2State createState() => _CompletarPerfil2State();
@@ -17,28 +20,18 @@ class CompletarPerfil2 extends StatefulWidget {
 
 class _CompletarPerfil2State extends State<CompletarPerfil2> {
 
-  // TEXT FIELDS STATE
+  UserMoreInfo informacion = new UserMoreInfo();
   final AuthService auth = AuthService();
 
 
   final _formKey = GlobalKey<FormState>();
   final userProvider = UserInfoProvider();
   FirebaseUser user;
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-
-  Future<String> getCurrentUID() async {
-    return (await _auth.currentUser()).uid;
-  }
-
   //model use
-  UserMoreInfo informacion = new UserMoreInfo();
 
   //textfield
   final _distritoController = TextEditingController();
   final _direccionController = TextEditingController();
-  // final _fechaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -101,9 +94,11 @@ class _CompletarPerfil2State extends State<CompletarPerfil2> {
                 }
               },
             ),
+            
           ])),
     );
   }
+
 
   Widget displayUserInformation(context, snapshot) {
     final user = snapshot.data;
@@ -176,19 +171,18 @@ class _CompletarPerfil2State extends State<CompletarPerfil2> {
                   child: Text('Siguiente',
                       style: TextStyle(color: Color.fromRGBO(206,40,112,1.0), fontSize: 25)),
                   onPressed: () async {
-
+                    
                     if(_formKey.currentState.validate()){
 
                             _formKey.currentState.save();
 
-                            // informacion.uid = user.uid;
+                            //auxiliar para guardar info
+                            UserMoreInfo aux;
                             informacion.id = user.uid;
+                            aux = await userProvider.cargarInformacion(informacion);
 
-                            print(informacion);
-
-                            userProvider.agregarInformacion(informacion);
-
-                            // await auth.updateUserName(informacion.nombre,user.photoUrl, user);
+                            //actualizar
+                            await userProvider.actualizarInformacion(aux);
 
                             Navigator.of(context).push(
                             MaterialPageRoute(
