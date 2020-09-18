@@ -159,10 +159,10 @@ class _HomeState extends State<Home> {
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Color.fromRGBO(234,65,136,1.0))
+                  side: BorderSide(color: kPrimaryColor)
                 ),
-                color: Color.fromRGBO(234,65,136,1.0),
-                child: Text('Enviar', style: TextStyle(color: Colors.white,fontSize: 20)),
+                color: kPrimaryColor,
+                child: Text('Enviar', style: TextStyle(color: kSecondaryColor,fontSize: 20)),
                 onPressed: () async {
                   ServiciosAlerta(uid: user.uid).enviarAlerta(idUsuario,latitude,longitude,mensaje,nombre,telefono);                 
                   Navigator.of(context).pop();
@@ -194,7 +194,7 @@ class _HomeState extends State<Home> {
           enviarGeolocalizacion(context);
         },
         backgroundColor: currentTab == 0 ? Colors.red:Colors.grey,
-        child: Icon(Icons.add_alert,color: currentTab == 0 ? Colors.white : Colors.grey,),
+        child: Icon(Icons.add_alert,color: currentTab == 0 ? kSecondaryColor : Colors.grey,),
         tooltip: "Alerta",
       ) : null,
       
@@ -225,12 +225,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.home,
-                          color: currentTab == 0 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                          color: currentTab == 0 ? kPrimaryColor : Colors.grey,
                         ),
                         Text(
-                          'Home',
+                          'Inicio',
                           style: TextStyle(
-                            color: currentTab == 0 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                            color: currentTab == 0 ? kPrimaryColor : Colors.grey,
                           ),
                         ),
                       ],
@@ -251,12 +251,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.contacts,
-                          color: currentTab == 1 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                          color: currentTab == 1 ? kPrimaryColor : Colors.grey,
                         ),
                         Text(
                           'Contacto',
                           style: TextStyle(
-                            color: currentTab == 1 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                            color: currentTab == 1 ? kPrimaryColor : Colors.grey,
                           ),
                         ),
                       ],
@@ -284,12 +284,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         FaIcon(
                           FontAwesomeIcons.newspaper, 
-                          color: currentTab == 2 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                          color: currentTab == 2 ? kPrimaryColor : Colors.grey,
                         ),
                         Text(
                           'Noticias',
                           style: TextStyle(
-                            color: currentTab == 2 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                            color: currentTab == 2 ? kPrimaryColor : Colors.grey,
                           ),
                         ),
                       ],
@@ -310,12 +310,12 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(
                           Icons.account_box,
-                          color: currentTab == 3 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                          color: currentTab == 3 ? kPrimaryColor : Colors.grey,
                         ),
                         Text(
                           'Cuenta',
                           style: TextStyle(
-                            color: currentTab == 3 ? Color.fromRGBO(234,65,136,1.0) : Colors.grey,
+                            color: currentTab == 3 ? kPrimaryColor : Colors.grey,
                           ),
                         ),
                       ],

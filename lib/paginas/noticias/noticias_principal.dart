@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -30,7 +31,7 @@ class _NoticiasState extends State<Noticias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(206,40,112,1.0),
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -38,11 +39,11 @@ class _NoticiasState extends State<Noticias> {
           children: <Widget>[
             Text(
               "Últimas Noticias",
-              style: TextStyle(fontSize: 22, color: Color.fromRGBO(206,40,112,1.0)),
+              style: TextStyle(fontSize: 22, color: kPrimaryColor),
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: kSecondaryColor,
         elevation: 0.0,
       ),
       body: Center(
@@ -130,9 +131,9 @@ class _NoticiasState extends State<Noticias> {
             MaterialPageRoute(builder: (context) => ListaNoticias()),
           );
         },
-        icon: Icon(Icons.add,color: Color.fromRGBO(206,40,112,1.0),),
-        label: Text("Ver más",style: TextStyle(color: Color.fromRGBO(206,40,112,1.0)),),
-        backgroundColor: Colors.white,
+        icon: Icon(Icons.add,color: kPrimaryColor,),
+        label: Text("Ver más",style: TextStyle(color: kPrimaryColor),),
+        backgroundColor: kSecondaryColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

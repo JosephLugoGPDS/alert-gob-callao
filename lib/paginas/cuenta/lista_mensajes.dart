@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'package:EstoyaTuLado/servicios/dbMensaje.dart';
 import 'package:EstoyaTuLado/modelos/mensajes.dart';
@@ -32,11 +33,11 @@ class _ListaMensajesState extends State<ListaMensajes> {
           children: <Widget>[
             Text(
               "Mis Mensajes",
-              style: TextStyle(fontSize: 22, color: Colors.white),
+              style: TextStyle(fontSize: 22, color: kSecondaryColor),
             )
           ],
         ),
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
       ),
       
@@ -66,22 +67,22 @@ class _ListaMensajesState extends State<ListaMensajes> {
                             const Padding(padding: EdgeInsets.only(top: 15)),
                             Text(
                               mensajes[index].asuntoMensaje,
-                              style: TextStyle(fontSize: 20,color: Color.fromRGBO(206,40,112,1.0)),
+                              style: TextStyle(fontSize: 20,color: kPrimaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             Text(
                               mensajes[index].contenidoMensaje,
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(fontSize: 15, color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             Text(
                               "Fecha:",
-                              style: TextStyle(fontSize: 15 ,fontWeight: FontWeight.w700, color: Colors.white),
+                              style: TextStyle(fontSize: 15 ,fontWeight: FontWeight.w700, color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 8)),
                             Text(
                               mensajes[index].fecha.toDate().toIso8601String().substring(0,10),
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(fontSize: 15, color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             

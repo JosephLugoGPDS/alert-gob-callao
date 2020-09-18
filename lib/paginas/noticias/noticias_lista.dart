@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'package:EstoyaTuLado/paginas/noticias/noticias_detalles.dart';
 import 'package:EstoyaTuLado/servicios/dbNoticias.dart';
@@ -31,7 +32,7 @@ class ListaNoticiasState extends State<ListaNoticias> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Noticias",style: TextStyle(fontSize: 22)),
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
         centerTitle: true,
       ),

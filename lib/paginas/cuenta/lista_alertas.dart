@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'package:EstoyaTuLado/servicios/dbLocalizacion.dart';
 import 'package:EstoyaTuLado/modelos/localizacion.dart';
@@ -32,11 +33,11 @@ class _ListaAlertasState extends State<ListaAlertas> {
           children: <Widget>[
             Text(
               "Mis Alertas",
-              style: TextStyle(fontSize: 22, color: Colors.white),
+              style: TextStyle(fontSize: 22, color: kSecondaryColor),
             )
           ],
         ),
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
       ),
       
@@ -66,32 +67,32 @@ class _ListaAlertasState extends State<ListaAlertas> {
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             Text(
                               "Problema:",
-                              style: TextStyle(fontSize: 18 ,color: Color.fromRGBO(206,40,112,1.0)),
+                              style: TextStyle(fontSize: 18 ,color: kPrimaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 8)),
                             Text(
                               alertas[index].problema,
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(fontSize: 15, color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             Text(
                               "Fecha:",
-                              style: TextStyle(fontSize: 18 ,fontWeight: FontWeight.w400, color: Color.fromRGBO(206,40,112,1.0)),
+                              style: TextStyle(fontSize: 18 ,fontWeight: FontWeight.w400, color: kPrimaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 8)),
                             Text(
                               alertas[index].fecha.toDate().toIso8601String().substring(0,10),
-                              style: TextStyle(fontSize: 15,color: Colors.white),
+                              style: TextStyle(fontSize: 15,color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 20)),
                             Text(
                               "Posición:",
-                              style: TextStyle(fontSize: 18 , color: Color.fromRGBO(206,40,112,1.0)),
+                              style: TextStyle(fontSize: 18 , color: kPrimaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 8)),
                             Text(
                               alertas[index].userPosition.latitude.toString()+"  ,  "+alertas[index].userPosition.longitude.toString(),
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style: TextStyle(fontSize: 15, color: kSecondaryColor),
                             ),
                             const Padding(padding: EdgeInsets.only(bottom: 18)),
                           ],

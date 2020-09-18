@@ -9,7 +9,9 @@ String userMoreInfoToJson(UserMoreInfo data) => json.encode(data.toJson());
 class UserMoreInfo {
     UserMoreInfo({
         this.id ,
-        // this.uid ,
+        this.email ,
+        this.rol = "usuario",
+        this.celular,
         this.nombre,
         this.apellido,
         this.fijo,
@@ -22,7 +24,9 @@ class UserMoreInfo {
     });
 
     String id;
-    // String uid;
+    String email;
+    String rol;
+    String celular;
     String nombre;
     String apellido;
     int fijo;
@@ -35,7 +39,9 @@ class UserMoreInfo {
 
     factory UserMoreInfo.fromJson(Map<String, dynamic> json) => UserMoreInfo(
         id          : json["id"],
-        // uid         : json["uid"],
+        email       : json["email"],
+        rol       : json["rol"],
+        celular       : json["celular"],
         nombre      : json["nombre"],
         apellido    : json["apellido"],
         fijo        : json["fijo"],
@@ -49,7 +55,9 @@ class UserMoreInfo {
 
     Map<String, dynamic> toJson() => {
         //"id"          : id,//evitar que el id se vuelva campo al actualizar
-        //"uid"          : uid,
+        "email"          : email,
+        "rol"         :rol,
+        "celular"          : celular,
         "nombre"      : nombre,
         "apellido"    : apellido,
         "fijo"        : fijo,

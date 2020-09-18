@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:EstoyaTuLado/modelos/contactos.dart';
@@ -57,7 +58,7 @@ class _ContactoDetalleState extends State<ContactoDetalle> {
       appBar: AppBar(
         title: Text('Detalles'),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         actions: <Widget>[
           if (widget.contacto != null)
             IconButton(
@@ -126,8 +127,8 @@ class _ContactoDetalleState extends State<ContactoDetalle> {
                           borderRadius: BorderRadius.circular(18.0),
                           side: BorderSide(color: Color.fromRGBO(215,24,104,1.0))
                         ),
-                        color: Color.fromRGBO(206,40,112,1.0),
-                        child: Text('Guardar', style: TextStyle(color: Colors.white,fontSize: 25)),
+                        color: kPrimaryColor,
+                        child: Text('Guardar', style: TextStyle(color: kSecondaryColor,fontSize: 25)),
                         onPressed: value != null && value ? () => onSave() : null,
                       ),
                 );

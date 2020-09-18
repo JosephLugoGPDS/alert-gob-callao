@@ -1,5 +1,6 @@
 import 'package:EstoyaTuLado/paginas/cuenta/lista_alertas.dart';
 import 'package:EstoyaTuLado/paginas/cuenta/lista_mensajes.dart';
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:EstoyaTuLado/servicios/auth.dart';
@@ -33,11 +34,12 @@ class _ConfiguracionState extends State<Configuracion> {
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Color.fromRGBO(206,40,112,1.0))
+                  side: BorderSide(color: kPrimaryColor)
                 ),
-                color: Color.fromRGBO(206,40,112,1.0),
+                color: kPrimaryColor,
                 child: Text('Si', style: TextStyle(color: Colors.white,fontSize: 20)),
                 onPressed: () async {
+                  //ToDo: Arreglar 
                   await auth.signOut();
                   Navigator.of(context).pop();
                 },
@@ -49,9 +51,9 @@ class _ConfiguracionState extends State<Configuracion> {
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Color.fromRGBO(206,40,112,1.0))
+                  side: BorderSide(color: kPrimaryColor)
                 ),
-                color: Color.fromRGBO(206,40,112,1.0),
+                color: kPrimaryColor,
                 child: Text('No', style: TextStyle(color: Colors.white,fontSize: 20)),
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -78,7 +80,7 @@ class _ConfiguracionState extends State<Configuracion> {
             )
           ],
         ),
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -120,7 +122,7 @@ class _ConfiguracionState extends State<Configuracion> {
                           children: <Widget>[
                             CircleAvatar(
                               radius: 50,
-                              backgroundColor: Color.fromRGBO(206,40,112,1.0),
+                              backgroundColor: kPrimaryColor,
                               child: Text(
                                 "${user.displayName}".substring(0,1),
                                 style: TextStyle(
@@ -181,7 +183,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color.fromRGBO(206,40,112,1.0),
+                  color: kPrimaryColor,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -223,7 +225,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color.fromRGBO(206,40,112,1.0),
+                  color: kPrimaryColor,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -267,7 +269,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color.fromRGBO(206,40,112,1.0),
+                  color: kPrimaryColor,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -309,7 +311,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color.fromRGBO(206,40,112,1.0),
+                  color: kPrimaryColor,
                 ),
                 child: Row(
                   children: <Widget>[

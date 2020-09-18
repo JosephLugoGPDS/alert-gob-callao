@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,12 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(206,40,112,1.0),
+      backgroundColor: kPrimaryColor,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(206,40,112,1.0)),
+            decoration: BoxDecoration(color: kPrimaryColor),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,

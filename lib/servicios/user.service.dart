@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:EstoyaTuLado/modelos/userinfo.dart';
+import 'package:EstoyaTuLado/servicios/auth.dart';
 import 'package:http/http.dart' as http;
 
-
+final AuthService auth = AuthService();
 class UserInfoProvider {
 
   final String _url = 'https://alert-test-b54e0.firebaseio.com';
@@ -23,64 +24,95 @@ class UserInfoProvider {
   }
 
 
-  Future<bool> agregarInformacion(UserMoreInfo informacion) async {
-    final url = '$_url/usuarios/${informacion.id}.json';
-    // final url = '$_url/usuarios.json';
+  Future<UserMoreInfo> agregarInformacion(UserMoreInfo informacion) async {
+    final url = '$_url/usuarios/${informacion.id}';
+    
 
-    final res = await http.put( url, body: userMoreInfoToJson(informacion));
+    final res = await http.get( '$url/email.json');
 
-    final decodedData = json.decode(res.body);
+    informacion.email = json.decode(res.body);
 
-    print(decodedData);
+    final res2 = await http.get( '$url/celular.json');
 
-    return true;
+    informacion.celular = json.decode(res2.body);
+
+
+    return informacion;
   }
 
   Future<UserMoreInfo> cargarInformacion(UserMoreInfo informacion) async {
+
+    final url = '$_url/usuarios/${informacion.id}';
     
-    final temp = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/apellido.json');
 
-    informacion.apellido = json.decode(temp.body);
+    final res = await http.get( '$url/email.json');
 
-    final temp2 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/nombre.json');
+    informacion.email = json.decode(res.body);
 
-    informacion.nombre = json.decode(temp2.body);
+    final res2 = await http.get( '$url/celular.json');
 
-    final temp3 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/fijo.json');
+    informacion.celular = json.decode(res2.body);
 
-    informacion.fijo = json.decode(temp3.body);
-    
-    final temp4 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/dni.json');
+    final res3 = await http.get( '$url/nombre.json');
 
-    informacion.dni = json.decode(temp4.body);
+    informacion.nombre = json.decode(res3.body);
+
+    final res4 = await http.get( '$url/apellido.json');
+
+    informacion.apellido = json.decode(res4.body);
+
+    final res5 = await http.get( '$url/fijo.json');
+
+    informacion.fijo = json.decode(res5.body);
+
+    final res6 = await http.get( '$url/dni.json');
+
+    informacion.dni = json.decode(res6.body);
+
 
     return informacion;
   }
   Future<UserMoreInfo> cargarInformacion2(UserMoreInfo informacion) async {
     
-    final temp2 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/nombre.json');
 
-    informacion.nombre = json.decode(temp2.body);
-
-    final temp = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/apellido.json');
-
-    informacion.apellido = json.decode(temp.body);
-
-    final temp3 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/fijo.json');
-
-    informacion.fijo = json.decode(temp3.body);
+    final url = '$_url/usuarios/${informacion.id}';
     
-    final temp4 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/dni.json');
 
-    informacion.dni = json.decode(temp4.body);
+    final res = await http.get( '$url/email.json');
 
-    final tem5 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/distrito.json');
+    informacion.email = json.decode(res.body);
 
-    informacion.distrito = json.decode(tem5.body);
-    
-    final temp6 = await http.get('https://alert-test-b54e0.firebaseio.com/usuarios/${informacion.id}/direccion%20.json');
+    final res2 = await http.get( '$url/celular.json');
 
-    informacion.direccion = json.decode(temp6.body);
+    informacion.celular = json.decode(res2.body);
+
+    final res3 = await http.get( '$url/nombre.json');
+
+    informacion.nombre = json.decode(res3.body);
+
+    final res4 = await http.get( '$url/apellido.json');
+
+    informacion.apellido = json.decode(res4.body);
+
+    final res5 = await http.get( '$url/fijo.json');
+
+    informacion.fijo = json.decode(res5.body);
+
+    final res6 = await http.get( '$url/dni.json');
+
+    informacion.dni = json.decode(res6.body);
+
+    final res7 = await http.get( '$url/distrito.json');
+
+    informacion.distrito = json.decode(res7.body);
+
+    final res8 = await http.get( '$url/direccion%20.json');
+
+    informacion.direccion = json.decode(res8.body);
+
+    final res9 = await http.get( '$url/fecha.json');
+
+    informacion.fecha = json.decode(res9.body);
 
     return informacion;
   }

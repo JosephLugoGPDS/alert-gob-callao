@@ -49,7 +49,7 @@ final AuthService auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(206,40,112,1.0),
+      backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,18 +177,16 @@ Widget displayUserInformation(context,snapshot){
                           side: BorderSide(color: Colors.white,)
                         ),
                         color: Colors.white,
-                        child: Text('Siguiente', style: TextStyle(color: Color.fromRGBO(206,40,112,1.0),fontSize: 25)),
+                        child: Text('Siguiente', style: TextStyle(color: kPrimaryColor,fontSize: 25)),
                         onPressed: () async {
 
                           if(_formKey.currentState.validate()){
 
                             _formKey.currentState.save();
-
-                            // informacion.uid = user.uid;
+                            UserMoreInfo aux;
                             informacion.id = user.uid;
-                            // informacion.nombre = 
-
-                            userProvider.actualizarInformacion(informacion);
+                            aux = await userProvider.agregarInformacion(informacion);
+                            await userProvider.actualizarInformacion(aux);
 
                             await auth.updateUserName(informacion.nombre,user.photoUrl, user);
 

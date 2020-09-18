@@ -19,7 +19,7 @@ class _ResetearPassState extends State<ResetearPass> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
-      backgroundColor: Color.fromRGBO(206,40,112,1.0),
+      backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class _ResetearPassState extends State<ResetearPass> {
                 "Ingrese su Correo",
                 style: TextStyle(
                   fontSize: 35,
-                  color: Colors.white,
+                  color: kSecondaryColor,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.start,
@@ -75,10 +75,10 @@ class _ResetearPassState extends State<ResetearPass> {
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.white)
+                          side: BorderSide(color: kSecondaryColor)
                         ),
-                        color: Colors.white,
-                        child: Text('Enviar', style: TextStyle(color: Color.fromRGBO(206,40,112,1.0),fontSize: 25)),
+                        color: kSecondaryColor,
+                        child: Text('Enviar', style: TextStyle(color: kPrimaryColor,fontSize: 25)),
                         onPressed: () async {
                           if(_formKey.currentState.validate()){
                             await _auth.sendPasswordResetEmail(email);
@@ -91,7 +91,7 @@ class _ResetearPassState extends State<ResetearPass> {
                     FlatButton(
                       child: Text(
                         "Volver al Login",
-                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                        style: TextStyle(color: kSecondaryColor, fontSize: 18.0),
                       ),
                       onPressed: (){
                         Navigator.of(context).pop();

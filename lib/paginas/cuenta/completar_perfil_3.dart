@@ -31,7 +31,7 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(206,40,112,1.0),
+      backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +132,7 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
                           BorderSide(color: Colors.white)),
                   color: Colors.white,
                   child: Text('Guardar',
-                      style: TextStyle(color: Color.fromRGBO(206,40,112,1.0), fontSize: 25)),
+                      style: TextStyle(color: kPrimaryColor, fontSize: 25)),
                   //   //ToDo Guardar datos
                   onPressed: ()async{
                     

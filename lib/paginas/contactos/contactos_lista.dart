@@ -58,7 +58,7 @@ class _ContactosState extends State<Contactos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kSecondaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -66,11 +66,11 @@ class _ContactosState extends State<Contactos> {
           children: <Widget>[
             Text(
               "Contacto",
-              style: TextStyle(fontSize: 22, color: Color.fromRGBO(206,40,112,1.0)),
+              style: TextStyle(fontSize: 22, color: kPrimaryColor),
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: kSecondaryColor,
         elevation: 0.0,
       ),
       body: Center(
@@ -92,7 +92,7 @@ class _ContactosState extends State<Contactos> {
                               borderRadius: BorderRadius.circular(35.0),
                               color: Color.fromRGBO(46,48,48,1.0),
                               boxShadow: [
-                                BoxShadow(color: Colors.white10, spreadRadius: 1)
+                                BoxShadow(color: kSecondaryColor10, spreadRadius: 1)
                               ]
                             ),
                             child: Column(
@@ -103,7 +103,7 @@ class _ContactosState extends State<Contactos> {
                                     style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white
+                                      color: kSecondaryColor
                                     ),
                                   )
                                 ),
@@ -117,7 +117,7 @@ class _ContactosState extends State<Contactos> {
                                         Text("+51 (1) 923 740 039",
                                           style: TextStyle(
                                             fontSize: 20.0,
-                                            color: Colors.white
+                                            color: kSecondaryColor
                                           )
                                         )
                                     ],
@@ -133,7 +133,7 @@ class _ContactosState extends State<Contactos> {
                                         Text("+51 (1) 923 740 039",
                                           style: TextStyle(
                                             fontSize: 20.0,
-                                            color: Colors.white
+                                            color: kSecondaryColor
                                           )
                                         )
                                     ],
@@ -149,7 +149,7 @@ class _ContactosState extends State<Contactos> {
                                         Text("+51 (1) 74 74 242",
                                           style: TextStyle(
                                             fontSize: 20.0,
-                                            color: Colors.white
+                                            color: kSecondaryColor
                                           )
                                         )
                                     ],
@@ -170,9 +170,9 @@ class _ContactosState extends State<Contactos> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(35.0),
-                              color: Color.fromRGBO(206,40,112,1.0),
+                              color: kPrimaryColor,
                               boxShadow: [
-                                BoxShadow(color: Colors.white10, spreadRadius: 1)
+                                BoxShadow(color: kSecondaryColor10, spreadRadius: 1)
                               ]
                             ),
                             child: Column(
@@ -186,7 +186,7 @@ class _ContactosState extends State<Contactos> {
                                         Text("Contactos",
                                           style: TextStyle(
                                             fontSize: 20.0,
-                                            color: Colors.white
+                                            color: kSecondaryColor
                                           )
                                         )
                                     ],
@@ -201,7 +201,7 @@ class _ContactosState extends State<Contactos> {
                                         title: Text(contactos[index].nombreContacto,
                                           style: TextStyle(
                                             fontSize: 18.0,
-                                            color: Colors.white
+                                            color: kSecondaryColor
                                           )
                                         ),
                                         subtitle: Text(contactos[index].telefonoContacto +'\n'+contactos[index].correoContacto,
@@ -214,8 +214,8 @@ class _ContactosState extends State<Contactos> {
                                         trailing: Icon(Icons.more_vert, color: Colors.blueGrey),
                                         leading: CircleAvatar(
                                           radius: 20.0,
-                                          backgroundColor: Colors.white,
-                                          child: Text(contactos[index].nombreContacto.substring(0,1), style: TextStyle(color: Color.fromRGBO(206,40,112,1.0),fontSize: 25),),
+                                          backgroundColor: kSecondaryColor,
+                                          child: Text(contactos[index].nombreContacto.substring(0,1), style: TextStyle(color: kPrimaryColor,fontSize: 25),),
                                         ),
                                         onTap: () {
                                           Navigator.of(context).push(MaterialPageRoute(
@@ -240,11 +240,11 @@ class _ContactosState extends State<Contactos> {
                                                     ));
                                                   },
                                                   elevation: 2.0,
-                                                  fillColor: Colors.white,
+                                                  fillColor: kSecondaryColor,
                                                   child: Icon(
                                                     Icons.person_add,
                                                     size: 20.0,
-                                                    color: Color.fromRGBO(206,40,112,1.0),
+                                                    color: kPrimaryColor,
                                                   ),
                                                   padding: EdgeInsets.all(15.0),
                                                   shape: CircleBorder(),
@@ -266,9 +266,9 @@ class _ContactosState extends State<Contactos> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(35.0),
-                              color: Color.fromRGBO(206,40,112,1.0),
+                              color: kPrimaryColor,
                               boxShadow: [
-                                BoxShadow(color: Colors.white10, spreadRadius: 1)
+                                BoxShadow(color: kSecondaryColor10, spreadRadius: 1)
                               ]
                             ),
                             child: Column(
@@ -316,10 +316,10 @@ class _ContactosState extends State<Contactos> {
                                   child: RaisedButton(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color: Color.fromRGBO(206,40,112,1.0))
+                                      side: BorderSide(color: kPrimaryColor)
                                     ),
-                                    color: Colors.white,
-                                    child: Text('Enviar', style: TextStyle(color: Color.fromRGBO(206,40,112,1.0),fontSize: 25)),
+                                    color: kSecondaryColor,
+                                    child: Text('Enviar', style: TextStyle(color: kPrimaryColor,fontSize: 25)),
                                     onPressed: () async {                 
                                       ServiciosMensaje(uid: user.uid).mandarMensaje(idUsuario, mensaje, asunto, nombre,telefono, correo); 
                                       _controller.clear();

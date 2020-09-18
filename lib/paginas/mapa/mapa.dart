@@ -1,3 +1,4 @@
+import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
@@ -132,7 +133,7 @@ class _MapaState extends State<Mapa> {
             )
           ],
         ),
-        backgroundColor: Color.fromRGBO(206,40,112,1.0),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
       ),
       
