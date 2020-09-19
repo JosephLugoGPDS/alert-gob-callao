@@ -1,5 +1,6 @@
 import 'package:EstoyaTuLado/paginas/cuenta/completar_perfil_2.dart';
-import 'package:EstoyaTuLado/servicios/user.service.dart';
+import 'package:EstoyaTuLado/servicios/dbUser.dart';
+import 'package:EstoyaTuLado/utils/loading.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +11,7 @@ import '../../utils/constantes.dart';
 
 import 'package:EstoyaTuLado/modelos/userinfo.dart';
 
-
+bool loading = false;
 class CompletarPerfil extends StatefulWidget {
 
   final Function toggleView;
@@ -48,7 +49,9 @@ final AuthService auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading
+        ? Loading()
+        : Scaffold(
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
@@ -182,7 +185,9 @@ Widget displayUserInformation(context,snapshot){
 
                           if(_formKey.currentState.validate()){
 
+
                             _formKey.currentState.save();
+                            
                             UserMoreInfo aux;
                             informacion.id = user.uid;
                             aux = await userProvider.agregarInformacion(informacion);
@@ -190,9 +195,10 @@ Widget displayUserInformation(context,snapshot){
 
                             await auth.updateUserName(informacion.nombre,user.photoUrl, user);
 
-                            Navigator.of(context).push(
+                              Navigator.of(context).push(
                             MaterialPageRoute(
                             builder: (context)=>CompletarPerfil2()));
+                            
                           }
                         },
                       ),

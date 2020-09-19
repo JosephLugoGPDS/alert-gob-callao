@@ -1,5 +1,5 @@
 import 'package:EstoyaTuLado/modelos/userinfo.dart';
-import 'package:EstoyaTuLado/servicios/user.service.dart';
+import 'package:EstoyaTuLado/servicios/dbUser.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';

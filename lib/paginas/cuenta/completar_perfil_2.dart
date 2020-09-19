@@ -1,5 +1,5 @@
 import 'package:EstoyaTuLado/modelos/userinfo.dart';
-import 'package:EstoyaTuLado/servicios/user.service.dart';
+import 'package:EstoyaTuLado/servicios/dbUser.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -139,21 +139,14 @@ class _CompletarPerfil2State extends State<CompletarPerfil2> {
                 DateTimeField(
                   format: format,
                   validator: (date) => date.toString().isEmpty ? 'Invalid date' : null,
-                  // initialValue: initialValue,
-                  // onChanged: (date) => setState(() {
-                  //   nacimiento = date.toString();
-                  // }),
-                  // onSaved: (date) => setState(() {
-                  //   nacimiento = date.toString();
-                  // }),
                   decoration: textInputDecoration.copyWith(
                       hintText: 'Fecha de nacimiento'),
                   controller: _fechaController,
                   onShowPicker: (context, currentValue) {
                     return DatePicker.showDatePicker(context,
                         showTitleActions: true,
-                        minTime: DateTime(1932, 3, 5),
-                        maxTime: DateTime(2002, 6, 7),
+                        minTime: DateTime(1940, 1, 1),
+                        maxTime: DateTime(2005, 12, 15),
                         theme: DatePickerTheme(
                             headerColor: kSecondaryColor,
                             backgroundColor: kPrimaryColor,
