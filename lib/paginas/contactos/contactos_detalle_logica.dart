@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:EstoyaTuLado/modelos/contactos.dart';
 import 'package:EstoyaTuLado/utils/debouncer.dart';
 
-
+import 'package:EstoyaTuLado/utils/capitalizar.dart';
 class LogicaDetalles {
 
   LogicaDetalles(this.contacto);
@@ -28,7 +28,7 @@ class LogicaDetalles {
 
   void save(String dato) async {
     final idUsuario = dato;
-    final nombreContacto = textControllerNombre.text.trim();
+    final nombreContacto = textControllerNombre.text.trim().capitalize();
     final correoContacto = textControllerCorreo.text.trim().toLowerCase();
     final telefonoContacto = textControllerTelefono.text.trim();
 
@@ -51,7 +51,8 @@ class LogicaDetalles {
 
   void onNombreChanged(String val) {
     debouncer.run(() async {
-      final nombreContacto = val.trim().toLowerCase();
+      // final nombreContacto = val.trim().toLowerCase();
+      final nombreContacto = val.trim().capitalize();
       valid.value = null;
       if (nombreContacto.isNotEmpty) {
         final query = Firestore.instance

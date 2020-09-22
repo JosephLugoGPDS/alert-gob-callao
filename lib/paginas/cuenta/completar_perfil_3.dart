@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../servicios/auth.dart';
 import '../../utils/constantes.dart';
+import 'package:EstoyaTuLado/utils/capitalizar.dart';
 
 class CompletarPerfil3 extends StatefulWidget {
   @override
@@ -24,9 +25,6 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
   FirebaseUser user;
   //model use
 
-  //textfield
-  final _nombreContactoController = TextEditingController();
-  final _telContactoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +93,15 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
 
   Widget displayUserInformation(context, snapshot) {
     final user = snapshot.data;
+    final String id = user.uid;
     return Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Form(
+        child: FutureBuilder(
+          future: userProvider.getInformacion(id),
+          builder: (context, snapshot) {
+            UserMoreInfo inf = snapshot.data;
+            if (snapshot.hasData) {
+              return  Form(
           key: _formKey,
           child: Column(
             children: <Widget>[
@@ -106,17 +110,17 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
                 decoration: textInputDecoration.copyWith(
                     hintText: 'Nombre de Contacto'),
                 validator: (val) => val.isEmpty ? 'Ingrese un nombre' : null,
-                onSaved: (val) => informacion.respaldoName = val,
-                controller: _nombreContactoController,
+                onSaved: (val) => inf.respaldoName = val.capitalize(),
+                controller: TextEditingController(text: inf.respaldoName),
               ),
               SizedBox(height: 10.0),
               TextFormField(
                 keyboardType: TextInputType.phone,
                 decoration: textInputDecoration.copyWith(
                     hintText: 'Celular de Contacto'),
-                onSaved: (val) =>informacion.respaldoTel = val,
+                onSaved: (val) =>inf.respaldoTel = val,
                 validator: (val) => val.length<7?'Ingrese un teléfono o celular válido':null,
-                controller: _telContactoController,
+                controller: TextEditingController(text: inf.respaldoTel),
               ),
 
               
@@ -140,13 +144,9 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
 
                             _formKey.currentState.save();
 
-                            //auxiliar para guardar info
-                            UserMoreInfo aux;
-                            informacion.id = user.uid;
-                            aux = await userProvider.cargarInformacion2(informacion);
-
-                            //actualizar
-                            await userProvider.actualizarInformacion(aux);
+                            inf.id = user.uid;
+                            
+                            await userProvider.actualizarInformacion(inf);
 
                             Navigator.of(context).pop();
                             Navigator.of(context).pop();
@@ -181,8 +181,10 @@ class _CompletarPerfil3State extends State<CompletarPerfil3> {
               ),
             ],
           ),
-        ));
+        );} else {
+              return Center(child: CircularProgressIndicator());
+            }
+          }),
+    );
   }
-
-
 }

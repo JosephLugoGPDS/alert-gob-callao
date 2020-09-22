@@ -11,7 +11,7 @@ class Loading extends StatelessWidget {
       child: Center(
         child: SpinKitSquareCircle(
         // color: Color.fromRGBO(234,65,136,1.0),
-        color: kPrimaryColor,
+        color: kPrimaryColorDark,
         size: 50.0,
         ),
       ),

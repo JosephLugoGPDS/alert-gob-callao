@@ -6,6 +6,8 @@ import 'package:EstoyaTuLado/servicios/auth.dart';
 import 'package:EstoyaTuLado/utils/constantes.dart';
 import 'package:EstoyaTuLado/utils/loading.dart';
 
+import 'package:EstoyaTuLado/utils/capitalizar.dart';
+
 class Registro extends StatefulWidget {
   final Function toggleView;
   Registro({this.toggleView});
@@ -87,7 +89,8 @@ class _RegistroState extends State<Registro> {
                               validator: (val) =>
                                   val.isEmpty ? 'Ingrese su nombre' : null,
                               onChanged: (val) {
-                                setState(() => nombre = val);
+                                setState(() => nombre = val.capitalize()
+                                );
                               },
                             ),
                             SizedBox(height: 10.0),
@@ -95,7 +98,7 @@ class _RegistroState extends State<Registro> {
                               keyboardType: TextInputType.phone,
                               decoration: textInputDecoration.copyWith(
                                   hintText: 'Teléfono'),
-                              validator: (val) => val.isEmpty
+                              validator: (val) => val.length < 7
                                   ? 'Ingrese su número de teléfono'
                                   : null,
                               onChanged: (val) {
@@ -130,15 +133,21 @@ class _RegistroState extends State<Registro> {
                             ),
                             Row(
                               children: <Widget>[
-                                Checkbox(
-                                  value: _acepto,
-                                  onChanged: (isChecked) {
-                                    setState(() {
-                                      _acepto = isChecked;
-                                    });
-                                  },
-                                  checkColor: kPrimaryColor,
-                                  activeColor: kSecondaryColor,
+                                Theme(
+                                  data: ThemeData(
+                                    unselectedWidgetColor:
+                                        kSecondaryColor// Your color
+                                  ),
+                                  child: Checkbox(
+                                    value: _acepto,
+                                    onChanged: (isChecked) {
+                                      setState(() {
+                                        _acepto = isChecked;
+                                      });
+                                    },
+                                    checkColor: kPrimaryColorDark,
+                                    activeColor: kSecondaryColor,
+                                  ),
                                 ),
                                 Text(
                                   "Acepto los ",
@@ -159,10 +168,10 @@ class _RegistroState extends State<Registro> {
                                   child: Text(
                                     "Términos y condiciones",
                                     style: TextStyle(
-                                        color: kSecondaryColor,
-                                        fontWeight: FontWeight.bold,
-                                        // decoration: TextDecoration.underline
-                                        ),
+                                      color: kSecondaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      // decoration: TextDecoration.underline
+                                    ),
                                   ),
                                 )
                               ],
@@ -180,7 +189,8 @@ class _RegistroState extends State<Registro> {
                                     style: TextStyle(
                                         color: kPrimaryColor, fontSize: 25)),
                                 onPressed: () async {
-                                  if (_formKey.currentState.validate() && _acepto ==true) {
+                                  if (_formKey.currentState.validate() &&
+                                      _acepto == true) {
                                     setState(() => loading = true);
                                     dynamic result =
                                         await _auth.registroConEmailyPassword(

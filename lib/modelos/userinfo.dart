@@ -62,7 +62,7 @@ class UserMoreInfo {
         "apellido"    : apellido,
         "fijo"        : fijo,
         "dni"         : dni,
-        "direccion "      :direccion,
+        "direccion"      :direccion,
         "distrito"        :distrito,
         "fecha"          :fecha,
         "respaldoName"    :respaldoName,

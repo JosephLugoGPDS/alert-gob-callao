@@ -200,14 +200,15 @@ class _ContactosState extends State<Contactos> {
                                       itemBuilder: (_, index) => ListTile(
                                         title: Text(contactos[index].nombreContacto,
                                           style: TextStyle(
-                                            fontSize: 18.0,
-                                            color: kSecondaryColor
+                                            fontSize: 20.0,
+                                            color: kSecondaryColor,
+                                            fontWeight: FontWeight.bold,
                                           )
                                         ),
                                         subtitle: Text(contactos[index].telefonoContacto +'\n'+contactos[index].correoContacto,
                                           style: TextStyle(
                                             fontSize: 15.0,
-                                            color: Colors.grey
+                                            color: kSecondaryColor
                                           )
                                         ),
                                         isThreeLine: true,

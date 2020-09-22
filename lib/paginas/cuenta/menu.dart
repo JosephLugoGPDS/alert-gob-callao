@@ -122,9 +122,9 @@ class _ConfiguracionState extends State<Configuracion> {
                           children: <Widget>[
                             CircleAvatar(
                               radius: 50,
-                              backgroundColor: kPrimaryColor,
+                              backgroundColor: kPrimaryColorDark,
                               child: Text(
-                                "${user.displayName}".substring(0,1),
+                                "${user.displayName}".substring(0,1).toUpperCase(),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 50
@@ -183,7 +183,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: kPrimaryColor,
+                  color: kPrimaryColorDark,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -225,7 +225,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: kPrimaryColor,
+                  color: kPrimaryColorDark,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -240,13 +240,7 @@ class _ConfiguracionState extends State<Configuracion> {
                       )
                     ),
                     Spacer(),
-                    /*
-                    FaIcon(
-                      FontAwesomeIcons.angleRight,
-                      size: 25,
-                      color: Colors.white54,
-                    ),
-                    */
+                    
                   ],
                 ),
               ),
@@ -269,7 +263,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: kPrimaryColor,
+                  color: kPrimaryColorDark,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -311,7 +305,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: kPrimaryColor,
+                  color: kPrimaryColorDark,
                 ),
                 child: Row(
                   children: <Widget>[
